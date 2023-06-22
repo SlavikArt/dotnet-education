@@ -329,6 +329,8 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+*.py
+*.ipynb
 
 # Cake - Uncomment if you are using it
 # tools/**
@@ -399,6 +401,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# JetBrains PyCharm
+*.idea/
 
 ##
 ## Visual studio for Mac
