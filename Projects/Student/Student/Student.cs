@@ -151,9 +151,55 @@
             }
         }
 
+        public static bool operator ==(Student student1, Student student2)
+        {
+            if (ReferenceEquals(student1, student2))
+                return true;
+
+            if (ReferenceEquals(student1, null) || ReferenceEquals(student2, null))
+                return false;
+
+            return student1.GetAverageGrade() == student2.GetAverageGrade();
+        }
+
+        public static bool operator !=(Student student1, Student student2)
+        {
+            return !(student1 == student2);
+        }
+
+        public static bool operator >(Student student1, Student student2)
+        {
+            return student1.GetAverageGrade() > student2.GetAverageGrade();
+        }
+
+        public static bool operator <(Student student1, Student student2)
+        {
+            return student1.GetAverageGrade() < student2.GetAverageGrade();
+        }
+
+        public static bool operator >=(Student student1, Student student2)
+        {
+            return student1.GetAverageGrade() >= student2.GetAverageGrade();
+        }
+
+        public static bool operator <=(Student student1, Student student2)
+        {
+            return student1.GetAverageGrade() <= student2.GetAverageGrade();
+        }
+
+        public static bool operator true(Student student)
+        {
+            return !student.IsFailing();
+        }
+
+        public static bool operator false(Student student)
+        {
+            return student.IsFailing();
+        }
+
         public bool IsFailing()
         {
-            return GetAverageGrade() < 8;
+            return GetAverageGrade() < 7;
         }
 
         public double GetAverageGrade()

@@ -78,6 +78,31 @@
             {
                 Console.WriteLine(e + "\n");
             }
+
+            Student stud1 = grp.Students[new Random().Next(0, grp.Students.Count)];
+            stud1.Print();
+            Console.WriteLine();
+            Student stud2 = grp.Students[new Random().Next(0, grp.Students.Count)];
+            stud2.Print();
+            Console.WriteLine();
+
+            if (stud1)
+                Console.WriteLine("stud1 is True");
+            else
+                Console.WriteLine("stud1 is False");
+            if (stud2)
+                Console.WriteLine("stud2 is True");
+            else
+                Console.WriteLine("stud2 is False");
+
+            Console.WriteLine($"stud1 > stud2 is {stud1 > stud2} ({stud1.GetAverageGrade():F2} > {stud2.GetAverageGrade():F2})");
+            Console.WriteLine($"stud1 < stud2 is {stud1 < stud2} ({stud1.GetAverageGrade():F2} < {stud2.GetAverageGrade():F2})");
+
+            Console.WriteLine($"stud1 >= stud2 is {stud1 >= stud2} ({stud1.GetAverageGrade():F2} >= {stud2.GetAverageGrade():F2})");
+            Console.WriteLine($"stud1 <= stud2 is {stud1 <= stud2} ({stud1.GetAverageGrade():F2} <= {stud2.GetAverageGrade():F2})");
+
+            Console.WriteLine($"stud1 == stud2 is {stud1 == stud2} ({stud1.GetAverageGrade():F2} == {stud2.GetAverageGrade():F2})");
+            Console.WriteLine($"stud1 != stud2 is {stud1 != stud2} ({stud1.GetAverageGrade():F2} != {stud2.GetAverageGrade():F2})");
         }
     }
 }
