@@ -105,6 +105,29 @@
             Console.WriteLine($"stud1 != stud2 is {stud1 != stud2} ({stud1.GetAverageGrade():F2} != {stud2.GetAverageGrade():F2})");
 
             Console.WriteLine("\n" + grp[3]);
+
+            Console.WriteLine(
+                "\n-------------------\n" +
+                "Sorted by Homework:" +
+                "\n-------------------\n");
+            Student.SortByHomework sortByHW = new Student.SortByHomework();
+            grp.Sort(sortByHW);
+
+            grp.Print();
+
+            Console.WriteLine(
+                "---------------------\n" +
+                "Sorted by Final Work:" +
+                "\n---------------------\n");
+            Student.SortByFinalWork sortByFW = new Student.SortByFinalWork();
+            grp.Sort(sortByFW);
+
+            grp.Print();
+
+            Console.WriteLine("---------\n");
+
+            foreach (Student student in grp)
+                Console.WriteLine(student.Name);
         }
     }
 }

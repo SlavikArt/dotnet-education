@@ -1,10 +1,11 @@
-﻿using System.Reflection.Metadata;
+﻿using System.Collections;
+using System.Reflection.Metadata;
 using System.Text.RegularExpressions;
 using System.Threading.Channels;
 
 namespace Student
 {
-    public class Group
+    public class Group : IEnumerable<Student>
     {
         private List<Student> students;
         private string groupName;
@@ -126,6 +127,21 @@ namespace Student
             courseNumber = group.CourseNumber;
         }
 
+        public IEnumerator<Student> GetEnumerator()
+        {
+            return students.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return ((IEnumerable)students).GetEnumerator();
+        }
+
+        public void Sort(IComparer<Student> sortType)
+        {
+            students.Sort(sortType);
+        }
+
         public Student this[uint index]
         {
             get
@@ -190,6 +206,12 @@ namespace Student
                     throw new InvalidGroupCourseNumberException("Group specialization number cannot be negative or bigger that 999.");
                 courseNumber = value;
             }
+        }
+
+        public void Print()
+        {
+            foreach (var student in students)
+                Console.WriteLine(student + "\n");
         }
 
         public void ShowAllStudents()

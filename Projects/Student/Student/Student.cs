@@ -1,6 +1,6 @@
 ﻿namespace Student
 {
-    public class Student
+    public class Student : IComparable<Student>
     {    
         private string surname;
         private string name;
@@ -34,6 +34,42 @@
             this.homeworkGrades = homeworkGrades;
             this.finalWorkGrades = finalWorkGrades;
             this.examGrades = examGrades;
+        }
+
+        public int CompareTo(Student other)
+        {
+            if (this == other)
+                return 0;
+            if (this > other)
+                return 1;
+            else
+                return -1;
+        }
+
+        public class SortByHomework : IComparer<Student>
+        {
+            public int Compare(Student x, Student y)
+            {
+                if (x.homeworkGrades.Average() == y.homeworkGrades.Average())
+                    return 0;
+                if (x.homeworkGrades.Average() > y.homeworkGrades.Average())
+                    return 1;
+                else
+                    return -1;
+            }
+        }
+
+        public class SortByFinalWork : IComparer<Student>
+        {
+            public int Compare(Student x, Student y)
+            {
+                if (x.finalWorkGrades.Average() == y.finalWorkGrades.Average())
+                    return 0;
+                if (x.finalWorkGrades.Average() > y.finalWorkGrades.Average())
+                    return 1;
+                else
+                    return -1;
+            }
         }
 
         public string Surname
