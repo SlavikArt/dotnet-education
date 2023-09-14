@@ -103,6 +103,8 @@
 
             Console.WriteLine($"stud1 == stud2 is {stud1 == stud2} ({stud1.GetAverageGrade():F2} == {stud2.GetAverageGrade():F2})");
             Console.WriteLine($"stud1 != stud2 is {stud1 != stud2} ({stud1.GetAverageGrade():F2} != {stud2.GetAverageGrade():F2})");
+
+            Console.WriteLine("\n" + grp[3]);
         }
     }
 }

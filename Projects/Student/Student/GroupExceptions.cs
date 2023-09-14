@@ -10,6 +10,11 @@
         public GroupDuplicateStudentsException(string message) : base(message) {}
     }
 
+    public class GroupIndexOutOfRangeException : Exception
+    {
+        public GroupIndexOutOfRangeException(string message) : base(message) {}
+    }
+
     public class InvalidGroupNameException : Exception
     {
         public InvalidGroupNameException(string message) : base(message) {}

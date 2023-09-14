@@ -126,6 +126,22 @@ namespace Student
             courseNumber = group.CourseNumber;
         }
 
+        public Student this[uint index]
+        {
+            get
+            {
+                if (index >= students.Count)
+                    throw new GroupIndexOutOfRangeException("Student index is out of range!");
+                return students[(int)index];
+            }
+            set
+            {
+                if (index >= students.Count)
+                    throw new GroupIndexOutOfRangeException("Student index is out of range!");
+                students[(int)index] = value;
+            }
+        }
+
         public List<Student> Students
         {
             get { return students; }
