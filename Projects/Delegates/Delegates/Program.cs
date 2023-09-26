@@ -5,14 +5,11 @@
         delegate void Menu();
         static void Main(string[] args)
         {
-            Menu[] menuOptions = new Menu[]
-            {
-                NewGame,
-                LoadGame,
-                GameRules,
-                AboutAuthor,
-                Exit
-            };
+            Menu menuOptions = NewGame;
+            menuOptions += LoadGame;
+            menuOptions += GameRules;
+            menuOptions += AboutAuthor;
+            menuOptions += Exit;
 
             while (true)
             {
@@ -33,9 +30,15 @@
                 else if (!int.TryParse(input, out index) || index < 1 || index > 4)
                 {
                     Console.WriteLine("Неверный ввод. Введите число от 1 до 4 или @ для выхода.");
+                    Thread.Sleep(3500);
                     continue;
                 }
-                menuOptions[index - 1].Invoke();
+
+                Delegate[] menuOptionsList = menuOptions.GetInvocationList();
+
+                Menu option = (Menu)menuOptionsList[index - 1];
+                option.Invoke();
+
                 Thread.Sleep(3500);
             }
         }
