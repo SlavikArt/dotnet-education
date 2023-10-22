@@ -128,6 +128,23 @@
 
             foreach (Student student in grp)
                 Console.WriteLine(student.Name);
+
+            Console.WriteLine("\nPress key from the list:");
+            Console.WriteLine(
+                "Space: Jump\n" +
+                "Enter: Select\n" +
+                "Escape: Sleep\n" +
+                "Up, Down, Right, Left: Move\n" +
+                "F1: Info\n"
+            );
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    var key = Console.ReadKey(true).Key;
+                    stud1.keyListener.Listen(key);
+                }
+            }
         }
     }
 }

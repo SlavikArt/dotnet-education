@@ -14,6 +14,8 @@
         private int[] finalWorkGrades;
         private int[] examGrades;
 
+        public StudentKeyListener keyListener = new StudentKeyListener();
+
         public Student(string surname, string name, string patronymic, 
             DateTime birthDate, Address homeAddress, string phoneNumber)
         {
@@ -24,6 +26,15 @@
             this.birthDate = birthDate;
             this.homeAddress = homeAddress;
             this.phoneNumber = phoneNumber;
+
+            keyListener.OnEnter += Select;
+            keyListener.OnSpace += Jump;
+            keyListener.OnEscape += Sleep;
+            keyListener.OnF1 += Info;
+            keyListener.OnLeft += Move;
+            keyListener.OnRight += Move;
+            keyListener.OnUp += Move;
+            keyListener.OnDown += Move;
         }
 
         public Student(string surname, string name, string patronymic, 
@@ -257,6 +268,48 @@
                 + "\nHomework Grades: " + string.Join(", ", homeworkGrades)
                 + "\nFinal Work Grades: " + string.Join(", ", finalWorkGrades)
                 + "\nExam Grades: " + string.Join(", ", examGrades);
+        }
+
+        private void Select(string msg)
+        {
+            Console.WriteLine($"You selected {Name} {Surname} student");
+        }
+
+        private void Jump(string msg)
+        {
+            Console.WriteLine($"{Name} is jumping!");
+        }
+
+        private void Sleep(string msg)
+        {
+            Console.WriteLine($"{Name} is sleeping...");
+        }
+
+        private void Info(string msg)
+        {
+            Print();
+            Console.WriteLine();
+        }
+
+        private void Move(string msg)
+        {
+            switch (msg)
+            {
+                case "Right":
+                    Console.WriteLine($"{Name} is moving right.");
+                    break;
+                case "Left":
+                    Console.WriteLine($"{Name} is moving left.");
+                    break;
+                case "Up":
+                    Console.WriteLine($"{Name} is moving up.");
+                    break;
+                case "Down":
+                    Console.WriteLine($"{Name} is moving down.");
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
